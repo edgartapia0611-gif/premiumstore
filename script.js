@@ -279,7 +279,7 @@ function abrirModal(producto, precio) {
   // Limpiar errores y marcas
   var errEl = document.getElementById('shpError');
   if (errEl) errEl.style.display = 'none';
-  ['shpNombre','shpTelefono','shpDireccion','shpCiudad','shpEstado','shpCP'].forEach(function(id) {
+  ['shpNombre','shpTelefono','shpPais','shpDireccion','shpCiudad','shpEstado','shpCP'].forEach(function(id) {
     var el = document.getElementById(id);
     if (el) el.classList.remove('shp-error');
   });
@@ -303,7 +303,7 @@ function abrirModal(producto, precio) {
 
 // ── Paso 1 → Paso 2 (validar y avanzar) ───────────────
 function siguientePaso() {
-  var campos = ['shpNombre','shpTelefono','shpDireccion','shpCiudad','shpEstado','shpCP'];
+  var campos = ['shpNombre','shpTelefono','shpPais','shpDireccion','shpCiudad','shpEstado','shpCP'];
   var valido = true;
   campos.forEach(function(id) {
     var el = document.getElementById(id);
@@ -326,6 +326,7 @@ function siguientePaso() {
   // Construir resumen de envío
   var nombre  = document.getElementById('shpNombre').value.trim();
   var tel     = document.getElementById('shpTelefono').value.trim();
+  var pais    = document.getElementById('shpPais').value.trim();
   var dir     = document.getElementById('shpDireccion').value.trim();
   var ciudad  = document.getElementById('shpCiudad').value.trim();
   var estado  = document.getElementById('shpEstado').value.trim();
@@ -333,7 +334,7 @@ function siguientePaso() {
 
   var summaryEl = document.getElementById('shpSummary');
   if (summaryEl) {
-    summaryEl.textContent = nombre + '  ·  ' + tel + '\n' + dir + ', ' + ciudad + ', ' + estado + '  CP ' + cp;
+    summaryEl.textContent = nombre + '  ·  ' + tel + '\n' + dir + ', ' + ciudad + ', ' + estado + '  CP ' + cp + '\n' + pais;
   }
 
   // Avanzar al paso 2
@@ -356,14 +357,15 @@ function volverPaso1() {
 
 // ── Helper: texto de envío para WhatsApp ──────────────
 function _getShippingText() {
-  var n = (document.getElementById('shpNombre')?.value    || '').trim();
-  var t = (document.getElementById('shpTelefono')?.value  || '').trim();
-  var d = (document.getElementById('shpDireccion')?.value || '').trim();
-  var c = (document.getElementById('shpCiudad')?.value    || '').trim();
-  var e = (document.getElementById('shpEstado')?.value    || '').trim();
-  var p = (document.getElementById('shpCP')?.value        || '').trim();
+  var n  = (document.getElementById('shpNombre')?.value    || '').trim();
+  var t  = (document.getElementById('shpTelefono')?.value  || '').trim();
+  var pa = (document.getElementById('shpPais')?.value      || '').trim();
+  var d  = (document.getElementById('shpDireccion')?.value || '').trim();
+  var c  = (document.getElementById('shpCiudad')?.value    || '').trim();
+  var e  = (document.getElementById('shpEstado')?.value    || '').trim();
+  var p  = (document.getElementById('shpCP')?.value        || '').trim();
   if (!n && !d) return '';
-  return n + ' (' + t + '), ' + d + ', ' + c + ', ' + e + ' CP ' + p;
+  return n + ' (' + t + '), ' + d + ', ' + c + ', ' + e + ' CP ' + p + ', ' + pa;
 }
 
 // ── Cerrar modal ──────────────────────────────────────
@@ -394,15 +396,15 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(cerrarModal, 500);
     });
   }
-  // Limpiar marca de error al escribir en un campo
+  // Limpiar marca de error al escribir/cambiar un campo
   document.querySelectorAll('.shp-input').forEach(function(inp) {
-    inp.addEventListener('input', function() {
+    var evt = inp.tagName === 'SELECT' ? 'change' : 'input';
+    inp.addEventListener(evt, function() {
       inp.classList.remove('shp-error');
       if (inp.value.trim()) {
-        var errEl = document.getElementById('shpError');
-        // Solo ocultar si todos los campos tienen valor
-        var allFilled = ['shpNombre','shpTelefono','shpDireccion','shpCiudad','shpEstado','shpCP']
+        var allFilled = ['shpNombre','shpTelefono','shpPais','shpDireccion','shpCiudad','shpEstado','shpCP']
           .every(function(id) { var el = document.getElementById(id); return el && el.value.trim(); });
+        var errEl = document.getElementById('shpError');
         if (allFilled && errEl) errEl.style.display = 'none';
       }
     });

@@ -1105,10 +1105,36 @@
       <div class="shp-fields">
         <input id="shpNombre"    type="text"  placeholder="Nombre completo *"        class="shp-input" autocomplete="name" />
         <input id="shpTelefono"  type="tel"   placeholder="Teléfono *"               class="shp-input" autocomplete="tel" inputmode="tel" />
+        <select id="shpPais" class="shp-input shp-select" autocomplete="country">
+          <option value="">País *</option>
+          <option value="México">🇲🇽 México</option>
+          <option value="Estados Unidos">🇺🇸 Estados Unidos</option>
+          <option value="Argentina">🇦🇷 Argentina</option>
+          <option value="Colombia">🇨🇴 Colombia</option>
+          <option value="Chile">🇨🇱 Chile</option>
+          <option value="Perú">🇵🇪 Perú</option>
+          <option value="Venezuela">🇻🇪 Venezuela</option>
+          <option value="Ecuador">🇪🇨 Ecuador</option>
+          <option value="Bolivia">🇧🇴 Bolivia</option>
+          <option value="Paraguay">🇵🇾 Paraguay</option>
+          <option value="Uruguay">🇺🇾 Uruguay</option>
+          <option value="Brasil">🇧🇷 Brasil</option>
+          <option value="Guatemala">🇬🇹 Guatemala</option>
+          <option value="Honduras">🇭🇳 Honduras</option>
+          <option value="El Salvador">🇸🇻 El Salvador</option>
+          <option value="Nicaragua">🇳🇮 Nicaragua</option>
+          <option value="Costa Rica">🇨🇷 Costa Rica</option>
+          <option value="Panamá">🇵🇦 Panamá</option>
+          <option value="Cuba">🇨🇺 Cuba</option>
+          <option value="República Dominicana">🇩🇴 Rep. Dominicana</option>
+          <option value="Puerto Rico">🇵🇷 Puerto Rico</option>
+          <option value="España">🇪🇸 España</option>
+          <option value="Otro">🌍 Otro</option>
+        </select>
         <input id="shpDireccion" type="text"  placeholder="Dirección (calle y nº) *" class="shp-input" autocomplete="address-line1" />
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
           <input id="shpCiudad"  type="text"  placeholder="Ciudad *"  class="shp-input" autocomplete="address-level2" />
-          <input id="shpEstado"  type="text"  placeholder="Estado *"  class="shp-input" autocomplete="address-level1" />
+          <input id="shpEstado"  type="text"  placeholder="Estado / Provincia *"  class="shp-input" autocomplete="address-level1" />
         </div>
         <input id="shpCP"        type="text"  placeholder="Código Postal *"          class="shp-input" autocomplete="postal-code" inputmode="numeric" maxlength="10" />
       </div>
