@@ -249,7 +249,7 @@ let curProduct = '', curPrice = 0;
 
 // ── Links de pago por producto ────────────────────────
 const MP_LINKS = {
-  'iPhone 13':     'https://mpago.la/1C9L6pK',
+  'iPhone 13':     'https://mpago.la/1c8Yty2',
   'iPhone 14':     'https://mpago.la/11PBkFY',
   'iPhone 15':     'https://mpago.la/21pCVWY',
   'iPhone 17 Pro': 'https://mpago.la/2drdZR1',
