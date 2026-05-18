@@ -69,9 +69,24 @@ function selColor(btn, imgId) {
   const img = document.getElementById(imgId);
   if (img && btn.dataset.img) {
     img.style.opacity = '0';
-    img.src    = btn.dataset.img;
+    img.style.display = '';
+    img._tried = 0; // reset fallback counter for this new src
+    img.src = btn.dataset.img;
     img.onload  = () => { img.style.opacity = '1'; };
-    img.onerror = () => { img.style.opacity = '1'; };
+    img.onerror = function() {
+      if (!this._tried) {
+        // Try the alternate CDN store
+        this._tried = 1;
+        this.src = this.src.replace('cdn-apple.com/4982/', 'cdn-apple.com/8756/');
+      } else {
+        this.onerror = null;
+        this.style.display = 'none';
+        const fbId = imgId.replace('img-', 'fb-');
+        const fb = document.getElementById(fbId);
+        if (fb) fb.style.display = 'flex';
+        this.style.opacity = '1';
+      }
+    };
   }
   const lbl = document.getElementById(imgId + '-lbl');
   if (lbl && btn.title) lbl.textContent = btn.title;
