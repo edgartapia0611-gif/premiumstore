@@ -243,12 +243,11 @@ document.addEventListener('DOMContentLoaded', buildCurrencyUI);
 if (document.readyState !== 'loading') buildCurrencyUI();
 
 // ============================================================
-//  MERCADO PAGO MODAL
+//  MERCADO PAGO MODAL — FLUJO 2 PASOS (Envío → Pago)
 // ============================================================
 let curProduct = '', curPrice = 0;
 
 // ── Links de pago por producto ────────────────────────
-// Reemplaza con los links reales de tu cuenta Mercado Pago
 const MP_LINKS = {
   'iPhone 13':     'https://mpago.la/1C9L6pK',
   'iPhone 14':     'https://mpago.la/11PBkFY',
@@ -257,23 +256,43 @@ const MP_LINKS = {
 };
 const MP_LINK_DEFAULT = 'https://mpago.la/1C9L6pK';
 
+// ── Abrir modal en el paso 1 (datos de envío) ─────────
 function abrirModal(producto, precio) {
   curProduct = producto;
   curPrice   = precio;
-  const fmt  = precio.toLocaleString('es-MX');
+  var fmt    = precio.toLocaleString('es-MX');
 
   document.getElementById('modalTitle').textContent   = producto;
   document.getElementById('modalProduct').textContent = producto;
   document.getElementById('modalPrice').textContent   = '$' + fmt + ' MXN';
   document.getElementById('successOverlay').classList.remove('show');
+  document.getElementById('modalStepLabel').textContent = 'Paso 1 de 2 — Envío';
 
-  const mpBtn = document.getElementById('mpPayBtn');
+  // Asignar link de MP correcto
+  var mpBtn = document.getElementById('mpPayBtn');
   if (mpBtn) mpBtn.href = MP_LINKS[producto] || MP_LINK_DEFAULT;
 
-  const waBtn = document.getElementById('modalWABtn');
+  // Mostrar paso 1, ocultar paso 2
+  document.getElementById('modalStep1').style.display = '';
+  document.getElementById('modalStep2').style.display = 'none';
+
+  // Limpiar errores y marcas
+  var errEl = document.getElementById('shpError');
+  if (errEl) errEl.style.display = 'none';
+  ['shpNombre','shpTelefono','shpDireccion','shpCiudad','shpEstado','shpCP'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.remove('shp-error');
+  });
+
+  // WhatsApp button: incluir datos de envío si ya están llenos
+  var waBtn = document.getElementById('modalWABtn');
   if (waBtn) {
     waBtn.onclick = function() {
-      abrirWhatsApp(producto, fmt + ' MXN');
+      var shpData = _getShippingText();
+      var msg = 'Hola, me interesa el ' + producto + ' ($' + fmt + ' MXN).';
+      if (shpData) msg += ' Datos de envío: ' + shpData + '.';
+      msg += ' ¿Está disponible?';
+      window.open('https://wa.me/521XXXXXXXXXX?text=' + encodeURIComponent(msg), '_blank');
       cerrarModal();
     };
   }
@@ -282,37 +301,115 @@ function abrirModal(producto, precio) {
   document.body.style.overflow = 'hidden';
 }
 
+// ── Paso 1 → Paso 2 (validar y avanzar) ───────────────
+function siguientePaso() {
+  var campos = ['shpNombre','shpTelefono','shpDireccion','shpCiudad','shpEstado','shpCP'];
+  var valido = true;
+  campos.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    if (!el.value.trim()) {
+      el.classList.add('shp-error');
+      valido = false;
+    } else {
+      el.classList.remove('shp-error');
+    }
+  });
+
+  var errEl = document.getElementById('shpError');
+  if (!valido) {
+    if (errEl) errEl.style.display = 'block';
+    return;
+  }
+  if (errEl) errEl.style.display = 'none';
+
+  // Construir resumen de envío
+  var nombre  = document.getElementById('shpNombre').value.trim();
+  var tel     = document.getElementById('shpTelefono').value.trim();
+  var dir     = document.getElementById('shpDireccion').value.trim();
+  var ciudad  = document.getElementById('shpCiudad').value.trim();
+  var estado  = document.getElementById('shpEstado').value.trim();
+  var cp      = document.getElementById('shpCP').value.trim();
+
+  var summaryEl = document.getElementById('shpSummary');
+  if (summaryEl) {
+    summaryEl.textContent = nombre + '  ·  ' + tel + '\n' + dir + ', ' + ciudad + ', ' + estado + '  CP ' + cp;
+  }
+
+  // Avanzar al paso 2
+  document.getElementById('modalStepLabel').textContent = 'Paso 2 de 2 — Pago';
+  document.getElementById('modalStep1').style.display = 'none';
+  document.getElementById('modalStep2').style.display = '';
+
+  var box = document.getElementById('modalBox');
+  if (box) box.scrollTop = 0;
+}
+
+// ── Paso 2 → Paso 1 (volver) ──────────────────────────
+function volverPaso1() {
+  document.getElementById('modalStepLabel').textContent = 'Paso 1 de 2 — Envío';
+  document.getElementById('modalStep1').style.display = '';
+  document.getElementById('modalStep2').style.display = 'none';
+  var box = document.getElementById('modalBox');
+  if (box) box.scrollTop = 0;
+}
+
+// ── Helper: texto de envío para WhatsApp ──────────────
+function _getShippingText() {
+  var n = (document.getElementById('shpNombre')?.value    || '').trim();
+  var t = (document.getElementById('shpTelefono')?.value  || '').trim();
+  var d = (document.getElementById('shpDireccion')?.value || '').trim();
+  var c = (document.getElementById('shpCiudad')?.value    || '').trim();
+  var e = (document.getElementById('shpEstado')?.value    || '').trim();
+  var p = (document.getElementById('shpCP')?.value        || '').trim();
+  if (!n && !d) return '';
+  return n + ' (' + t + '), ' + d + ', ' + c + ', ' + e + ' CP ' + p;
+}
+
+// ── Cerrar modal ──────────────────────────────────────
 function cerrarModal() {
-  const modal = document.getElementById('payModal');
+  var modal = document.getElementById('payModal');
   if (modal) modal.classList.remove('active');
   document.body.style.overflow = '';
 }
 
 // Modal: cerrar al hacer click en el fondo (overlay) pero NO dentro del modal-box
-// Se usa stopPropagation en el modal-box para que el click no llegue al overlay
-document.addEventListener('DOMContentLoaded', () => {
-  const payModal = document.getElementById('payModal');
-  const modalBox = document.getElementById('modalBox');
+document.addEventListener('DOMContentLoaded', function() {
+  var payModal = document.getElementById('payModal');
+  var modalBox = document.getElementById('modalBox');
   if (payModal) {
-    payModal.addEventListener('click', (e) => {
+    payModal.addEventListener('click', function(e) {
       if (e.target === payModal) cerrarModal();
     });
   }
   if (modalBox) {
-    modalBox.addEventListener('click', (e) => {
-      e.stopPropagation(); // evita que el click llegue al overlay
+    modalBox.addEventListener('click', function(e) {
+      e.stopPropagation();
     });
   }
   // El botón de MP cierra el modal después de 500ms (tiempo para abrir la pestaña)
-  const mpBtn = document.getElementById('mpPayBtn');
+  var mpBtn = document.getElementById('mpPayBtn');
   if (mpBtn) {
-    mpBtn.addEventListener('click', () => {
+    mpBtn.addEventListener('click', function() {
       setTimeout(cerrarModal, 500);
     });
   }
+  // Limpiar marca de error al escribir en un campo
+  document.querySelectorAll('.shp-input').forEach(function(inp) {
+    inp.addEventListener('input', function() {
+      inp.classList.remove('shp-error');
+      if (inp.value.trim()) {
+        var errEl = document.getElementById('shpError');
+        // Solo ocultar si todos los campos tienen valor
+        var allFilled = ['shpNombre','shpTelefono','shpDireccion','shpCiudad','shpEstado','shpCP']
+          .every(function(id) { var el = document.getElementById(id); return el && el.value.trim(); });
+        if (allFilled && errEl) errEl.style.display = 'none';
+      }
+    });
+  });
 });
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarModal(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') cerrarModal(); });
 
 // ============================================================
 //  PARTICLE CANVAS

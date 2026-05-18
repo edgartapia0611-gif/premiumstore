@@ -361,11 +361,10 @@
           </div>
           <div class="bg-white/10 rounded-full overflow-hidden" style="height:6px"><div class="stock-bar" style="width:25%"></div></div>
         </div>
-        <a href="https://mpago.la/1C9L6pK"
-           target="_blank" rel="noopener noreferrer"
+        <button onclick="abrirModal('iPhone 13', 500)"
            class="btn-primary card-buy-btn w-full py-2.5 rounded-xl text-sm font-semibold mb-2 text-white">
           <i class="fa-solid fa-cart-shopping mr-1" style="pointer-events:none;"></i> Comprar ahora
-        </a>
+        </button>
         <button onclick="abrirWhatsApp('iPhone 13','$500 MXN')" class="btn-whatsapp w-full py-2.5 rounded-xl text-sm font-semibold text-white" style="position:relative;z-index:2;">
           <i class="fa-brands fa-whatsapp mr-1" style="pointer-events:none;"></i> Consultar
         </button>
@@ -417,11 +416,10 @@
           </div>
           <div class="bg-white/10 rounded-full overflow-hidden" style="height:6px"><div class="stock-bar" style="width:20%"></div></div>
         </div>
-        <a href="https://mpago.la/11PBkFY"
-           target="_blank" rel="noopener noreferrer"
+        <button onclick="abrirModal('iPhone 14', 750)"
            class="btn-primary card-buy-btn w-full py-2.5 rounded-xl text-sm font-semibold mb-2 text-white">
           <i class="fa-solid fa-cart-shopping mr-1" style="pointer-events:none;"></i> Comprar ahora
-        </a>
+        </button>
         <button onclick="abrirWhatsApp('iPhone 14','$750 MXN')" class="btn-whatsapp w-full py-2.5 rounded-xl text-sm font-semibold text-white" style="position:relative;z-index:2;">
           <i class="fa-brands fa-whatsapp mr-1" style="pointer-events:none;"></i> Consultar
         </button>
@@ -471,12 +469,11 @@
           </div>
           <div class="bg-white/10 rounded-full overflow-hidden" style="height:6px"><div class="stock-bar" style="width:15%"></div></div>
         </div>
-        <a href="https://mpago.la/21pCVWY"
-           target="_blank" rel="noopener noreferrer"
-           class="card-buy-btn block w-full py-2.5 rounded-xl text-sm font-bold mb-2 text-black bg-white hover:bg-gray-100 transition-all text-center"
-           style="text-decoration:none; pointer-events:auto; position:relative; z-index:2; touch-action:manipulation;">
+        <button onclick="abrirModal('iPhone 15', 1000)"
+           class="card-buy-btn w-full py-2.5 rounded-xl text-sm font-bold mb-2 text-black bg-white hover:bg-gray-100 transition-all"
+           style="pointer-events:auto; position:relative; z-index:2; touch-action:manipulation; border:none; cursor:pointer;">
           <i class="fa-solid fa-cart-shopping mr-1" style="pointer-events:none;"></i> Comprar ahora
-        </a>
+        </button>
         <button onclick="abrirWhatsApp('iPhone 15','$1,000 MXN')" class="btn-whatsapp w-full py-2.5 rounded-xl text-sm font-semibold text-white" style="position:relative;z-index:2;">
           <i class="fa-brands fa-whatsapp mr-1" style="pointer-events:none;"></i> Consultar
         </button>
@@ -568,12 +565,11 @@
           </div>
           <div class="bg-white/10 rounded-full overflow-hidden" style="height:6px"><div class="stock-bar" style="width:8%"></div></div>
         </div>
-        <a href="https://mpago.la/2drdZR1"
-           target="_blank" rel="noopener noreferrer"
-           class="card-buy-btn block w-full py-2.5 rounded-xl text-sm font-bold mb-2 text-black text-center"
-           style="background:linear-gradient(135deg,#f5c842,#e8a800); text-decoration:none; pointer-events:auto; position:relative; z-index:2; touch-action:manipulation;">
+        <button onclick="abrirModal('iPhone 17 Pro', 3500)"
+           class="card-buy-btn w-full py-2.5 rounded-xl text-sm font-bold mb-2 text-black"
+           style="background:linear-gradient(135deg,#f5c842,#e8a800); pointer-events:auto; position:relative; z-index:2; touch-action:manipulation; border:none; cursor:pointer;">
           <i class="fa-solid fa-cart-shopping mr-1" style="pointer-events:none;"></i> Comprar ahora
-        </a>
+        </button>
         <button onclick="abrirWhatsApp('iPhone 17 Pro','$3,500 MXN')" class="btn-whatsapp w-full py-2.5 rounded-xl text-sm font-semibold text-white" style="position:relative;z-index:2;">
           <i class="fa-brands fa-whatsapp mr-1" style="pointer-events:none;"></i> Consultar
         </button>
@@ -1078,7 +1074,7 @@
     <!-- Header -->
     <div class="flex items-start justify-between mb-5">
       <div>
-        <div class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-1">Completar compra</div>
+        <div class="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-1" id="modalStepLabel">Paso 1 de 2 — Envío</div>
         <div class="font-black text-xl leading-tight" id="modalTitle">iPhone 15</div>
       </div>
       <div class="flex items-center gap-3 flex-shrink-0">
@@ -1089,8 +1085,8 @@
       </div>
     </div>
 
-    <!-- Order summary -->
-    <div class="glass rounded-2xl p-4 mb-6 flex items-center justify-between gap-3">
+    <!-- Order summary (siempre visible) -->
+    <div class="glass rounded-2xl p-4 mb-5 flex items-center justify-between gap-3">
       <div class="flex items-center gap-3 min-w-0">
         <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
           <i class="fa-brands fa-apple text-lg"></i>
@@ -1103,37 +1099,81 @@
       <div class="font-black text-xl flex-shrink-0" id="modalPrice">$1,000 MXN</div>
     </div>
 
-    <!-- Mercado Pago Button -->
-    <a id="mpPayBtn"
-       href="https://mpago.la/21pCVWY"
-       target="_blank" rel="noopener noreferrer"
-       class="mp-btn mb-4">
-      <i class="fa-solid fa-shield-halved text-lg" style="pointer-events:none;"></i>
-      &nbsp; Pagar con Mercado Pago
-    </a>
-
-    <!-- Security note -->
-    <p class="text-center text-xs text-gray-500 mb-5 flex items-center justify-center gap-1.5">
-      <i class="fa-solid fa-lock text-green-500"></i>
-      Pagos 100% seguros mediante Mercado Pago
-    </p>
-
-    <!-- Payment method icons -->
-    <div class="flex flex-wrap items-center justify-center gap-3 mb-6 p-3 rounded-xl" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);">
-      <i class="fa-brands fa-cc-visa text-2xl text-blue-400"></i>
-      <i class="fa-brands fa-cc-mastercard text-2xl text-red-400"></i>
-      <span class="text-xs font-black text-red-600 bg-red-600/10 px-2 py-0.5 rounded">OXXO</span>
-      <span class="text-xs font-bold text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded">SPEI</span>
-      <span class="text-xs font-bold text-sky-400 bg-sky-400/10 px-2 py-0.5 rounded">Mercado Pago</span>
-    </div>
-
-    <!-- WhatsApp alternative -->
-    <div class="text-center border-t border-white/8 pt-5">
-      <p class="text-xs text-gray-600 mb-3">¿Prefieres asesoría personalizada?</p>
-      <button id="modalWABtn" class="btn-whatsapp w-full py-3 rounded-xl text-sm font-bold text-white">
-        <i class="fa-brands fa-whatsapp mr-2"></i> Consultar por WhatsApp
+    <!-- ══ PASO 1: Formulario de envío ══ -->
+    <div id="modalStep1">
+      <p class="text-sm text-gray-400 mb-4">Ingresa tus datos para coordinar el envío de tu pedido.</p>
+      <div class="shp-fields">
+        <input id="shpNombre"    type="text"  placeholder="Nombre completo *"        class="shp-input" autocomplete="name" />
+        <input id="shpTelefono"  type="tel"   placeholder="Teléfono *"               class="shp-input" autocomplete="tel" inputmode="tel" />
+        <input id="shpDireccion" type="text"  placeholder="Dirección (calle y nº) *" class="shp-input" autocomplete="address-line1" />
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <input id="shpCiudad"  type="text"  placeholder="Ciudad *"  class="shp-input" autocomplete="address-level2" />
+          <input id="shpEstado"  type="text"  placeholder="Estado *"  class="shp-input" autocomplete="address-level1" />
+        </div>
+        <input id="shpCP"        type="text"  placeholder="Código Postal *"          class="shp-input" autocomplete="postal-code" inputmode="numeric" maxlength="10" />
+      </div>
+      <div id="shpError" class="text-red-400 text-xs mt-2 mb-2" style="display:none;">
+        <i class="fa-solid fa-circle-exclamation mr-1"></i> Por favor completa todos los campos.
+      </div>
+      <button onclick="siguientePaso()"
+        class="w-full py-3.5 rounded-xl text-sm font-bold text-black bg-white hover:bg-gray-100 transition-all mt-4"
+        style="touch-action:manipulation; border:none; cursor:pointer; position:relative; z-index:2;">
+        Continuar al pago &nbsp;<i class="fa-solid fa-arrow-right" style="pointer-events:none;"></i>
       </button>
     </div>
+
+    <!-- ══ PASO 2: Pago ══ -->
+    <div id="modalStep2" style="display:none;">
+
+      <!-- Resumen de envío -->
+      <div class="glass rounded-xl p-3 mb-5" style="font-size:13px;">
+        <div class="flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-truck text-green-400"></i>
+            <span class="font-semibold text-white text-xs uppercase tracking-wide">Envío a</span>
+          </div>
+          <button onclick="volverPaso1()"
+            class="text-xs text-blue-400 hover:text-blue-300 transition-colors"
+            style="background:none; border:none; cursor:pointer; padding:0; text-decoration:underline;">
+            Cambiar
+          </button>
+        </div>
+        <div id="shpSummary" class="text-gray-400 mt-1.5 leading-snug" style="white-space:pre-line;"></div>
+      </div>
+
+      <!-- Mercado Pago Button -->
+      <a id="mpPayBtn"
+         href="https://mpago.la/21pCVWY"
+         target="_blank" rel="noopener noreferrer"
+         class="mp-btn mb-4">
+        <i class="fa-solid fa-shield-halved text-lg" style="pointer-events:none;"></i>
+        &nbsp; Pagar con Mercado Pago
+      </a>
+
+      <!-- Security note -->
+      <p class="text-center text-xs text-gray-500 mb-5 flex items-center justify-center gap-1.5">
+        <i class="fa-solid fa-lock text-green-500"></i>
+        Pagos 100% seguros mediante Mercado Pago
+      </p>
+
+      <!-- Payment method icons -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-6 p-3 rounded-xl" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);">
+        <i class="fa-brands fa-cc-visa text-2xl text-blue-400"></i>
+        <i class="fa-brands fa-cc-mastercard text-2xl text-red-400"></i>
+        <span class="text-xs font-black text-red-600 bg-red-600/10 px-2 py-0.5 rounded">OXXO</span>
+        <span class="text-xs font-bold text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded">SPEI</span>
+        <span class="text-xs font-bold text-sky-400 bg-sky-400/10 px-2 py-0.5 rounded">Mercado Pago</span>
+      </div>
+
+      <!-- WhatsApp alternative -->
+      <div class="text-center border-t border-white/8 pt-5">
+        <p class="text-xs text-gray-600 mb-3">¿Prefieres asesoría personalizada?</p>
+        <button id="modalWABtn" class="btn-whatsapp w-full py-3 rounded-xl text-sm font-bold text-white">
+          <i class="fa-brands fa-whatsapp mr-2"></i> Consultar por WhatsApp
+        </button>
+      </div>
+
+    </div><!-- /modalStep2 -->
 
   </div>
 </div>
