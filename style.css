@@ -772,3 +772,76 @@ section, header, footer, nav, main, article, aside { max-width: 100%; }
     cursor: pointer;
   }
 }
+
+/* ===== WHY PRICES SECTION ===== */
+.why-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+}
+
+/* ===== GUARANTEE SECTION ===== */
+.garantia-card {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.garantia-card:hover {
+  transform: translateY(-6px);
+}
+
+/* ===== IMPROVED TESTIMONIAL CARDS ===== */
+.testi-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testi-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1);
+}
+.testi-avatar-fallback {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* ===== BUY BUTTON GLOW ===== */
+.btn-buy-glow {
+  transition: all 0.3s ease !important;
+}
+.btn-buy-glow:hover {
+  box-shadow: 0 0 24px rgba(255,255,255,0.15), 0 8px 30px rgba(0,0,0,0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ===== FLOATING WHATSAPP BUTTON ===== */
+.wa-float-btn {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border: none;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  animation: wa-pulse 3s ease-in-out infinite;
+}
+.wa-float-btn:hover {
+  transform: translateY(-3px) scale(1.03) !important;
+  box-shadow: 0 16px 48px rgba(37,211,102,0.55), 0 4px 12px rgba(0,0,0,0.4) !important;
+}
+.wa-float-label {
+  max-width: 120px;
+  overflow: hidden;
+}
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.3); }
+  50%       { box-shadow: 0 8px 40px rgba(37,211,102,0.65), 0 2px 8px rgba(0,0,0,0.3); }
+}
+@media (max-width: 480px) {
+  .wa-float-btn { padding: 14px; border-radius: 50%; }
+  .wa-float-label { display: none; }
+}

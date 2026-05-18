@@ -17,6 +17,9 @@
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="iPhones Premium Reacondicionados" />
   <meta name="twitter:description" content="Certificados, batería 90-100%, envío mundial y garantía incluida." />
+  <meta name="twitter:image" content="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-black-select-202309?wid=400&hei=500&fmt=jpeg" />
+  <meta property="og:url" content="https://premiumstore.lat" />
+  <link rel="canonical" href="https://premiumstore.lat" />
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍎</text></svg>" />
   <!-- Tailwind v3 Play CDN — loaded synchronously (BLOCKS parser here).
@@ -123,6 +126,7 @@
         <a href="#nosotros" class="hover:text-white transition-colors">Nosotros</a>
         <a href="#proceso"  class="hover:text-white transition-colors">Cómo Comprar</a>
         <a href="#faq"      class="hover:text-white transition-colors">FAQ</a>
+        <a href="#garantia" class="hover:text-white transition-colors">Garantía</a>
       </div>
       <!-- Right side controls -->
       <div class="flex items-center gap-2">
@@ -165,6 +169,10 @@
       <a href="#faq" class="mobile-nav-link" onclick="closeMenu()">
         <i class="fa-solid fa-circle-question text-gray-400"></i>
         Preguntas Frecuentes
+      </a>
+      <a href="#garantia" class="mobile-nav-link" onclick="closeMenu()">
+        <i class="fa-solid fa-shield-halved text-green-400"></i>
+        Garantía
       </a>
       <div style="height:1px;background:rgba(255,255,255,0.07);margin:6px 12px;"></div>
       <a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20quiero%20información%20sobre%20iPhones"
@@ -327,6 +335,14 @@
             <div class="iphone-screen"><div class="w-full h-full flex items-center justify-center" style="background:linear-gradient(145deg,#1a1a2e,#16213e)"><i class="fa-brands fa-apple text-white/80 text-3xl"></i></div></div>
           </div>
           <span class="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg">EN STOCK</span>
+          <span class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 px-2">
+            <span class="inline-flex items-center gap-1 bg-black/70 backdrop-blur-sm border border-green-500/30 text-green-400 text-xs font-bold px-2 py-0.5 rounded-full">
+              <i class="fa-solid fa-battery-three-quarters text-xs" style="pointer-events:none;"></i> 90-100%
+            </span>
+            <span class="inline-flex items-center gap-1 bg-black/70 backdrop-blur-sm border border-blue-500/30 text-blue-400 text-xs font-bold px-2 py-0.5 rounded-full">
+              <i class="fa-solid fa-shield-halved text-xs" style="pointer-events:none;"></i> Garantía
+            </span>
+          </span>
         </div>
         <div class="text-xs text-gray-400 mb-2 h-4" id="img-13-lbl">Negro</div>
         <div class="swatch-group flex justify-center gap-2 mb-4 flex-wrap">
@@ -362,7 +378,7 @@
           <div class="bg-white/10 rounded-full overflow-hidden" style="height:6px"><div class="stock-bar" style="width:25%"></div></div>
         </div>
         <button onclick="abrirModal('iPhone 13', 500)"
-           class="btn-primary card-buy-btn w-full py-2.5 rounded-xl text-sm font-semibold mb-2 text-white">
+           class="btn-primary card-buy-btn btn-buy-glow w-full py-2.5 rounded-xl text-sm font-semibold mb-2 text-white">
           <i class="fa-solid fa-cart-shopping mr-1" style="pointer-events:none;"></i> Comprar ahora
         </button>
         <button onclick="abrirWhatsApp('iPhone 13','$500 MXN')" class="btn-whatsapp w-full py-2.5 rounded-xl text-sm font-semibold text-white" style="position:relative;z-index:2;">
@@ -382,6 +398,14 @@
             <div class="iphone-screen"><div class="w-full h-full flex items-center justify-center" style="background:linear-gradient(145deg,#0f3460,#533483)"><i class="fa-brands fa-apple text-white/80 text-3xl"></i></div></div>
           </div>
           <span class="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg">EN STOCK</span>
+          <span class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 px-2">
+            <span class="inline-flex items-center gap-1 bg-black/70 backdrop-blur-sm border border-green-500/30 text-green-400 text-xs font-bold px-2 py-0.5 rounded-full">
+              <i class="fa-solid fa-battery-three-quarters text-xs" style="pointer-events:none;"></i> 90-100%
+            </span>
+            <span class="inline-flex items-center gap-1 bg-black/70 backdrop-blur-sm border border-blue-500/30 text-blue-400 text-xs font-bold px-2 py-0.5 rounded-full">
+              <i class="fa-solid fa-shield-halved text-xs" style="pointer-events:none;"></i> Garantía
+            </span>
+          </span>
         </div>
         <div class="text-xs text-gray-400 mb-2 h-4" id="img-14-lbl">Negro</div>
         <div class="swatch-group flex justify-center gap-2 mb-4 flex-wrap">
@@ -417,7 +441,7 @@
           <div class="bg-white/10 rounded-full overflow-hidden" style="height:6px"><div class="stock-bar" style="width:20%"></div></div>
         </div>
         <button onclick="abrirModal('iPhone 14', 750)"
-           class="btn-primary card-buy-btn w-full py-2.5 rounded-xl text-sm font-semibold mb-2 text-white">
+           class="btn-primary card-buy-btn btn-buy-glow w-full py-2.5 rounded-xl text-sm font-semibold mb-2 text-white">
           <i class="fa-solid fa-cart-shopping mr-1" style="pointer-events:none;"></i> Comprar ahora
         </button>
         <button onclick="abrirWhatsApp('iPhone 14','$750 MXN')" class="btn-whatsapp w-full py-2.5 rounded-xl text-sm font-semibold text-white" style="position:relative;z-index:2;">
@@ -438,6 +462,14 @@
             <div class="iphone-screen"><div class="w-full h-full flex items-center justify-center" style="background:linear-gradient(145deg,#134e5e,#71b280)"><i class="fa-brands fa-apple text-white/90 text-3xl"></i></div></div>
           </div>
           <span class="absolute top-0 right-0 bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded-full shadow-lg">POPULAR</span>
+          <span class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 px-2">
+            <span class="inline-flex items-center gap-1 bg-black/70 backdrop-blur-sm border border-green-500/30 text-green-400 text-xs font-bold px-2 py-0.5 rounded-full">
+              <i class="fa-solid fa-battery-three-quarters text-xs" style="pointer-events:none;"></i> 90-100%
+            </span>
+            <span class="inline-flex items-center gap-1 bg-black/70 backdrop-blur-sm border border-blue-500/30 text-blue-400 text-xs font-bold px-2 py-0.5 rounded-full">
+              <i class="fa-solid fa-shield-halved text-xs" style="pointer-events:none;"></i> Garantía
+            </span>
+          </span>
         </div>
         <div class="text-xs text-gray-400 mb-2 h-4" id="img-15-lbl">Negro</div>
         <div class="swatch-group flex justify-center gap-2 mb-4 flex-wrap">
@@ -470,7 +502,7 @@
           <div class="bg-white/10 rounded-full overflow-hidden" style="height:6px"><div class="stock-bar" style="width:15%"></div></div>
         </div>
         <button onclick="abrirModal('iPhone 15', 1000)"
-           class="card-buy-btn w-full py-2.5 rounded-xl text-sm font-bold mb-2 text-black bg-white hover:bg-gray-100 transition-all"
+           class="card-buy-btn btn-buy-glow w-full py-2.5 rounded-xl text-sm font-bold mb-2 text-black bg-white hover:bg-gray-100 transition-all"
            style="pointer-events:auto; position:relative; z-index:2; touch-action:manipulation; border:none; cursor:pointer;">
           <i class="fa-solid fa-cart-shopping mr-1" style="pointer-events:none;"></i> Comprar ahora
         </button>
@@ -493,6 +525,14 @@
             src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-black-select-202409?wid=200&hei=260&fmt=png-alpha"
             alt="iPhone 16">
           <span class="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">AGOTADO</span>
+          <span class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 px-2">
+            <span class="inline-flex items-center gap-1 bg-black/70 backdrop-blur-sm border border-green-500/30 text-green-400 text-xs font-bold px-2 py-0.5 rounded-full">
+              <i class="fa-solid fa-battery-three-quarters text-xs" style="pointer-events:none;"></i> 90-100%
+            </span>
+            <span class="inline-flex items-center gap-1 bg-black/70 backdrop-blur-sm border border-blue-500/30 text-blue-400 text-xs font-bold px-2 py-0.5 rounded-full">
+              <i class="fa-solid fa-shield-halved text-xs" style="pointer-events:none;"></i> Garantía
+            </span>
+          </span>
         </div>
         <div class="text-xs text-gray-600 mb-2 h-4">Todos los colores agotados</div>
         <div class="swatch-group flex justify-center gap-2 mb-4 flex-wrap" style="opacity:0.35;">
@@ -539,6 +579,14 @@
             <div class="iphone-screen"><div class="w-full h-full flex items-center justify-center" style="background:linear-gradient(145deg,#1a1a2e,#0d1b2a)"><i class="fa-brands fa-apple text-yellow-300 text-3xl"></i></div></div>
           </div>
           <span class="absolute top-0 right-0 text-black text-xs font-bold px-2 py-1 rounded-full shadow-lg" style="background:linear-gradient(135deg,#f5c842,#e8a800)">PRO</span>
+          <span class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 px-2">
+            <span class="inline-flex items-center gap-1 bg-black/70 backdrop-blur-sm border border-green-500/30 text-green-400 text-xs font-bold px-2 py-0.5 rounded-full">
+              <i class="fa-solid fa-battery-three-quarters text-xs" style="pointer-events:none;"></i> 90-100%
+            </span>
+            <span class="inline-flex items-center gap-1 bg-black/70 backdrop-blur-sm border border-blue-500/30 text-blue-400 text-xs font-bold px-2 py-0.5 rounded-full">
+              <i class="fa-solid fa-shield-halved text-xs" style="pointer-events:none;"></i> Garantía
+            </span>
+          </span>
         </div>
         <div class="text-xs text-gray-400 mb-2 h-4" id="img-17-lbl">Titanio Negro</div>
         <div class="swatch-group flex justify-center gap-2 mb-4 flex-wrap">
@@ -566,7 +614,7 @@
           <div class="bg-white/10 rounded-full overflow-hidden" style="height:6px"><div class="stock-bar" style="width:8%"></div></div>
         </div>
         <button onclick="abrirModal('iPhone 17 Pro', 3500)"
-           class="card-buy-btn w-full py-2.5 rounded-xl text-sm font-bold mb-2 text-black"
+           class="card-buy-btn btn-buy-glow w-full py-2.5 rounded-xl text-sm font-bold mb-2 text-black"
            style="background:linear-gradient(135deg,#f5c842,#e8a800); pointer-events:auto; position:relative; z-index:2; touch-action:manipulation; border:none; cursor:pointer;">
           <i class="fa-solid fa-cart-shopping mr-1" style="pointer-events:none;"></i> Comprar ahora
         </button>
@@ -595,6 +643,65 @@
           <div class="text-2xl font-black" id="seconds">00</div>
           <div class="text-xs text-gray-500">Seg</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-7xl mx-auto px-4"></div>
+
+<section id="precios" class="py-16 lg:py-24 bg-black">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16 fade-up">
+      <span class="text-sm text-gray-500 uppercase tracking-widest font-semibold">Transparencia total</span>
+      <h2 class="text-4xl sm:text-5xl font-black mt-3 mb-4">¿Por qué nuestros precios<br class="hidden sm:block"> son tan bajos?</h2>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">No hay trampa. Hay una razón muy clara para cada centavo que ahorras.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+      <div class="why-card glass-card rounded-3xl p-8 fade-left delay-1 flex gap-5">
+        <div class="why-icon flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(34,197,94,0.2),rgba(34,197,94,0.05));border:1px solid rgba(34,197,94,0.2);">
+          <i class="fa-solid fa-recycle text-green-400 text-xl"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg mb-2">Equipos reacondicionados premium</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Son iPhones originales de Apple restaurados profesionalmente. Pasan por revisión completa de pantalla, batería, cámara y conectividad. Funcionan igual que nuevos pero cuestan mucho menos.</p>
+        </div>
+      </div>
+      <div class="why-card glass-card rounded-3xl p-8 fade-right delay-1 flex gap-5">
+        <div class="why-icon flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(59,130,246,0.05));border:1px solid rgba(59,130,246,0.2);">
+          <i class="fa-solid fa-ship text-blue-400 text-xl"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg mb-2">Importación directa en mayoreo</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Importamos grandes volúmenes directamente desde el origen, sin depender de distribuidores locales. Eso nos permite conseguir precios muy por debajo del mercado.</p>
+        </div>
+      </div>
+      <div class="why-card glass-card rounded-3xl p-8 fade-left delay-2 flex gap-5">
+        <div class="why-icon flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(251,146,60,0.2),rgba(251,146,60,0.05));border:1px solid rgba(251,146,60,0.2);">
+          <i class="fa-solid fa-store-slash text-orange-400 text-xl"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg mb-2">Venta directa sin intermediarios</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">No pagamos comisiones a tiendas físicas ni a distribuidores. Vendemos directo al cliente, lo que elimina hasta el 40% del costo extra que añaden los intermediarios.</p>
+        </div>
+      </div>
+      <div class="why-card glass-card rounded-3xl p-8 fade-right delay-2 flex gap-5">
+        <div class="why-icon flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(168,85,247,0.2),rgba(168,85,247,0.05));border:1px solid rgba(168,85,247,0.2);">
+          <i class="fa-solid fa-microscope text-purple-400 text-xl"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg mb-2">Pruebas de calidad rigurosas</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Cada equipo pasa por más de 20 pruebas antes de llegar a ti: Face ID, batería, pantalla, altavoces, micrófonos y conectividad. Si no pasa, no se vende.</p>
+        </div>
+      </div>
+    </div>
+    <div class="fade-up rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left" style="background:linear-gradient(135deg,rgba(220,38,38,0.12),rgba(220,38,38,0.04));border:1px solid rgba(220,38,38,0.2);">
+      <div class="flex-shrink-0 w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center">
+        <i class="fa-solid fa-award text-red-400 text-2xl"></i>
+      </div>
+      <div>
+        <div class="font-black text-xl text-white mb-1">Precio bajo no significa baja calidad</div>
+        <p class="text-gray-400 text-sm">Nuestros equipos son 100% originales Apple, con garantía incluida y soporte postventa real. El ahorro viene de cómo compramos, no de lo que vendemos.</p>
       </div>
     </div>
   </div>
@@ -707,103 +814,233 @@
 <!-- TESTIMONIALS -->
 <section id="testimonios" class="py-16 lg:py-24 bg-black">
   <div class="max-w-6xl mx-auto px-4">
-    <div class="text-center mb-16 fade-up">
-      <span class="text-sm text-gray-500 uppercase tracking-widest font-semibold">Testimonios reales</span>
-      <h2 class="text-4xl sm:text-5xl font-black mt-3">Lo que dicen nuestros clientes</h2>
+    <div class="text-center mb-12 fade-up">
+      <span class="text-sm text-gray-500 uppercase tracking-widest font-semibold">Clientes reales</span>
+      <h2 class="text-4xl sm:text-5xl font-black mt-3 mb-6">Lo que dicen nuestros clientes</h2>
+      <div class="inline-flex items-center gap-4 glass rounded-2xl px-6 py-4">
+        <div class="text-center">
+          <div class="text-4xl font-black text-white">4.9</div>
+          <div class="flex gap-0.5 justify-center mt-1">
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+          </div>
+          <div class="text-xs text-gray-500 mt-1">Calificación promedio</div>
+        </div>
+        <div class="w-px h-12 bg-white/10"></div>
+        <div class="text-center">
+          <div class="text-4xl font-black text-white">+500</div>
+          <div class="text-xs text-gray-500 mt-1">Clientes satisfechos</div>
+        </div>
+        <div class="w-px h-12 bg-white/10"></div>
+        <div class="text-center">
+          <div class="text-4xl font-black text-white">98%</div>
+          <div class="text-xs text-gray-500 mt-1">Recomendarían</div>
+        </div>
+      </div>
     </div>
-    <div id="testimonios-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-      <div class="testimonial-card glass-card rounded-2xl p-6 fade-up delay-1 flex flex-col gap-4">
-        <div class="flex items-center gap-1 text-yellow-400 text-base">★★★★★</div>
+      <div class="testi-card glass-card rounded-2xl p-6 fade-up delay-1 flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <div class="flex gap-0.5">
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+          </div>
+          <span class="text-xs bg-green-500/15 text-green-400 border border-green-500/20 px-2 py-0.5 rounded-full font-semibold">✓ Verificado</span>
+        </div>
         <p class="text-gray-300 text-sm leading-relaxed flex-1">"Me llegó en 2 días y parecía nuevo. La batería al 98% como lo prometieron. Sin duda volvería a comprar aquí."</p>
-        <div class="flex items-center gap-3 pt-2 border-t border-white/6">
-          <img src="https://i.pravatar.cc/80?u=mariar" alt="María R." class="testi-avatar"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="testi-avatar-fallback bg-gradient-to-br from-gray-600 to-gray-800" style="display:none">MR</div>
+        <div class="flex items-center gap-3 pt-3 border-t border-white/8">
+          <div class="testi-avatar-fallback bg-gradient-to-br from-pink-600 to-purple-800 flex-shrink-0">MR</div>
           <div class="flex-1">
             <div class="font-semibold text-sm text-white">María R.</div>
-            <div class="text-gray-500 text-xs">Ciudad de México 🇲🇽</div>
+            <div class="text-gray-500 text-xs">Ciudad de México 🇲🇽 · iPhone 14</div>
           </div>
-          <span class="text-xs bg-green-500/15 text-green-400 border border-green-500/20 px-2 py-0.5 rounded-full">✓ Verificado</span>
         </div>
       </div>
 
-      <div class="testimonial-card glass-card rounded-2xl p-6 fade-up delay-2 flex flex-col gap-4">
-        <div class="flex items-center gap-1 text-yellow-400 text-base">★★★★★</div>
-        <p class="text-gray-300 text-sm leading-relaxed flex-1">"100% recomendado. El iPhone 15 llegó perfecto, sin rayones, con cargador incluido. Excelente atención por WhatsApp."</p>
-        <div class="flex items-center gap-3 pt-2 border-t border-white/6">
-          <img src="https://i.pravatar.cc/80?u=juanc" alt="Juan C." class="testi-avatar"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="testi-avatar-fallback bg-gradient-to-br from-blue-700 to-blue-900" style="display:none">JC</div>
+      <div class="testi-card glass-card rounded-2xl p-6 fade-up delay-2 flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <div class="flex gap-0.5">
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+          </div>
+          <span class="text-xs bg-green-500/15 text-green-400 border border-green-500/20 px-2 py-0.5 rounded-full font-semibold">✓ Verificado</span>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed flex-1">"100% recomendado. El iPhone 15 llegó perfecto, sin rayones. Excelente atención por WhatsApp, respondieron en minutos."</p>
+        <div class="flex items-center gap-3 pt-3 border-t border-white/8">
+          <div class="testi-avatar-fallback bg-gradient-to-br from-blue-600 to-blue-900 flex-shrink-0">JC</div>
           <div class="flex-1">
             <div class="font-semibold text-sm text-white">Juan C.</div>
-            <div class="text-gray-500 text-xs">Guadalajara, Jalisco 🇲🇽</div>
+            <div class="text-gray-500 text-xs">Guadalajara, Jalisco 🇲🇽 · iPhone 15</div>
           </div>
-          <span class="text-xs bg-green-500/15 text-green-400 border border-green-500/20 px-2 py-0.5 rounded-full">✓ Verificado</span>
         </div>
       </div>
 
-      <div class="testimonial-card glass-card rounded-2xl p-6 fade-up delay-3 flex flex-col gap-4">
-        <div class="flex items-center gap-1 text-yellow-400 text-base">★★★★★</div>
-        <p class="text-gray-300 text-sm leading-relaxed flex-1">"Excelente batería, el equipo funciona perfecto. Me mandaron fotos antes de enviar para verificar el estado. Muy confiables."</p>
-        <div class="flex items-center gap-3 pt-2 border-t border-white/6">
-          <img src="https://i.pravatar.cc/80?u=anal" alt="Ana L." class="testi-avatar"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="testi-avatar-fallback bg-gradient-to-br from-purple-700 to-purple-900" style="display:none">AL</div>
+      <div class="testi-card glass-card rounded-2xl p-6 fade-up delay-3 flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <div class="flex gap-0.5">
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+          </div>
+          <span class="text-xs bg-green-500/15 text-green-400 border border-green-500/20 px-2 py-0.5 rounded-full font-semibold">✓ Verificado</span>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed flex-1">"Me mandaron fotos del equipo antes de enviar para verificar el estado. Llegó excelente, batería al 97%. Muy confiables."</p>
+        <div class="flex items-center gap-3 pt-3 border-t border-white/8">
+          <div class="testi-avatar-fallback bg-gradient-to-br from-purple-600 to-indigo-900 flex-shrink-0">AL</div>
           <div class="flex-1">
             <div class="font-semibold text-sm text-white">Ana L.</div>
-            <div class="text-gray-500 text-xs">Monterrey, NL 🇲🇽</div>
+            <div class="text-gray-500 text-xs">Monterrey, NL 🇲🇽 · iPhone 13</div>
           </div>
-          <span class="text-xs bg-green-500/15 text-green-400 border border-green-500/20 px-2 py-0.5 rounded-full">✓ Verificado</span>
         </div>
       </div>
 
-      <div class="testimonial-card glass-card rounded-2xl p-6 fade-up delay-1 flex flex-col gap-4">
-        <div class="flex items-center gap-1 text-yellow-400 text-base">★★★★★</div>
+      <div class="testi-card glass-card rounded-2xl p-6 fade-up delay-1 flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <div class="flex gap-0.5">
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+          </div>
+          <span class="text-xs bg-green-500/15 text-green-400 border border-green-500/20 px-2 py-0.5 rounded-full font-semibold">✓ Verificado</span>
+        </div>
         <p class="text-gray-300 text-sm leading-relaxed flex-1">"Compré el 16 y quedé impresionado. Llegó en caja, con accesorios, y la pantalla está sin ningún defecto. Vale cada peso."</p>
-        <div class="flex items-center gap-3 pt-2 border-t border-white/6">
-          <img src="https://i.pravatar.cc/80?u=carlosr" alt="Carlos R." class="testi-avatar"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="testi-avatar-fallback bg-gradient-to-br from-orange-700 to-red-900" style="display:none">CR</div>
+        <div class="flex items-center gap-3 pt-3 border-t border-white/8">
+          <div class="testi-avatar-fallback bg-gradient-to-br from-orange-600 to-red-900 flex-shrink-0">CR</div>
           <div class="flex-1">
             <div class="font-semibold text-sm text-white">Carlos R.</div>
-            <div class="text-gray-500 text-xs">Puebla, Pue. 🇲🇽</div>
+            <div class="text-gray-500 text-xs">Puebla, Pue. 🇲🇽 · iPhone 16</div>
           </div>
-          <span class="text-xs bg-green-500/15 text-green-400 border border-green-500/20 px-2 py-0.5 rounded-full">✓ Verificado</span>
         </div>
       </div>
 
-      <div class="testimonial-card glass-card rounded-2xl p-6 fade-up delay-2 flex flex-col gap-4">
-        <div class="flex items-center gap-1 text-yellow-400 text-base">★★★★★</div>
+      <div class="testi-card glass-card rounded-2xl p-6 fade-up delay-2 flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <div class="flex gap-0.5">
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+          </div>
+          <span class="text-xs bg-green-500/15 text-green-400 border border-green-500/20 px-2 py-0.5 rounded-full font-semibold">✓ Verificado</span>
+        </div>
         <p class="text-gray-300 text-sm leading-relaxed flex-1">"Rapidísimo el envío, 1 día hábil y ya estaba en mi casa. El teléfono impecable. Me ahorré mucho comprando reacondicionado."</p>
-        <div class="flex items-center gap-3 pt-2 border-t border-white/6">
-          <img src="https://i.pravatar.cc/80?u=sofiam" alt="Sofía M." class="testi-avatar"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="testi-avatar-fallback bg-gradient-to-br from-teal-700 to-cyan-900" style="display:none">SM</div>
+        <div class="flex items-center gap-3 pt-3 border-t border-white/8">
+          <div class="testi-avatar-fallback bg-gradient-to-br from-teal-600 to-cyan-900 flex-shrink-0">SM</div>
           <div class="flex-1">
             <div class="font-semibold text-sm text-white">Sofía M.</div>
-            <div class="text-gray-500 text-xs">Querétaro, Qro. 🇲🇽</div>
+            <div class="text-gray-500 text-xs">Querétaro, Qro. 🇲🇽 · iPhone 14</div>
           </div>
-          <span class="text-xs bg-green-500/15 text-green-400 border border-green-500/20 px-2 py-0.5 rounded-full">✓ Verificado</span>
         </div>
       </div>
 
-      <div class="testimonial-card glass-card rounded-2xl p-6 fade-up delay-3 flex flex-col gap-4">
-        <div class="flex items-center gap-1 text-yellow-400 text-base">★★★★★</div>
+      <div class="testi-card glass-card rounded-2xl p-6 fade-up delay-3 flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <div class="flex gap-0.5">
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+            <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+          </div>
+          <span class="text-xs bg-green-500/15 text-green-400 border border-green-500/20 px-2 py-0.5 rounded-full font-semibold">✓ Verificado</span>
+        </div>
         <p class="text-gray-300 text-sm leading-relaxed flex-1">"Llevaba tiempo buscando un 17 Pro a buen precio. Lo encontré aquí y llegó mejor de lo esperado. Recomiendo con ojos cerrados."</p>
-        <div class="flex items-center gap-3 pt-2 border-t border-white/6">
-          <img src="https://i.pravatar.cc/80?u=luisg" alt="Luis G." class="testi-avatar"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="testi-avatar-fallback bg-gradient-to-br from-yellow-700 to-amber-900" style="display:none">LG</div>
+        <div class="flex items-center gap-3 pt-3 border-t border-white/8">
+          <div class="testi-avatar-fallback bg-gradient-to-br from-yellow-600 to-amber-900 flex-shrink-0">LG</div>
           <div class="flex-1">
             <div class="font-semibold text-sm text-white">Luis G.</div>
-            <div class="text-gray-500 text-xs">Cancún, Q. Roo 🇲🇽</div>
+            <div class="text-gray-500 text-xs">Cancún, Q. Roo 🇲🇽 · iPhone 17 Pro</div>
           </div>
-          <span class="text-xs bg-green-500/15 text-green-400 border border-green-500/20 px-2 py-0.5 rounded-full">✓ Verificado</span>
         </div>
       </div>
 
     </div>
+  </div>
+</section>
+
+<div class="divider max-w-7xl mx-auto px-4"></div>
+
+<!-- GUARANTEE -->
+<section id="garantia" class="py-16 lg:py-24 bg-black">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16 fade-up">
+      <span class="text-sm text-gray-500 uppercase tracking-widest font-semibold">Tu tranquilidad primero</span>
+      <h2 class="text-4xl sm:text-5xl font-black mt-3 mb-4">Tu compra está protegida</h2>
+      <p class="text-gray-400 text-lg max-w-xl mx-auto">Cada iPhone que enviamos está respaldado por nuestra garantía completa.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+      <div class="garantia-card glass-card rounded-2xl p-6 text-center fade-up delay-1 flex flex-col items-center gap-4">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,rgba(34,197,94,0.25),rgba(34,197,94,0.05));border:2px solid rgba(34,197,94,0.3);">
+          <i class="fa-solid fa-shield-halved text-green-400 text-2xl"></i>
+        </div>
+        <div>
+          <div class="font-bold text-base mb-1">Garantía por falla de fábrica</div>
+          <p class="text-gray-400 text-xs leading-relaxed">Si el equipo presenta falla de fábrica después de recibirlo, lo resolvemos sin costo.</p>
+        </div>
+      </div>
+      <div class="garantia-card glass-card rounded-2xl p-6 text-center fade-up delay-2 flex flex-col items-center gap-4">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,rgba(59,130,246,0.25),rgba(59,130,246,0.05));border:2px solid rgba(59,130,246,0.3);">
+          <i class="fa-solid fa-magnifying-glass text-blue-400 text-2xl"></i>
+        </div>
+        <div>
+          <div class="font-bold text-base mb-1">Equipos probados al 100%</div>
+          <p class="text-gray-400 text-xs leading-relaxed">Más de 20 pruebas antes del envío: pantalla, Face ID, cámara, altavoces, Wi-Fi, batería y más.</p>
+        </div>
+      </div>
+      <div class="garantia-card glass-card rounded-2xl p-6 text-center fade-up delay-3 flex flex-col items-center gap-4">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,rgba(251,146,60,0.25),rgba(251,146,60,0.05));border:2px solid rgba(251,146,60,0.3);">
+          <i class="fa-solid fa-battery-full text-orange-400 text-2xl"></i>
+        </div>
+        <div>
+          <div class="font-bold text-base mb-1">Batería certificada 90-100%</div>
+          <p class="text-gray-400 text-xs leading-relaxed">Te enviamos captura de pantalla de la salud real de la batería antes del envío. Sin sorpresas.</p>
+        </div>
+      </div>
+      <div class="garantia-card glass-card rounded-2xl p-6 text-center fade-up delay-4 flex flex-col items-center gap-4">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,rgba(34,197,94,0.25),rgba(34,197,94,0.05));border:2px solid rgba(34,197,94,0.3);">
+          <i class="fa-brands fa-whatsapp text-green-400 text-2xl"></i>
+        </div>
+        <div>
+          <div class="font-bold text-base mb-1">Soporte por WhatsApp</div>
+          <p class="text-gray-400 text-xs leading-relaxed">Atención real por WhatsApp de lunes a domingo. Resolvemos cualquier duda o problema.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-up glass rounded-3xl p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+      <div class="flex flex-col items-center gap-3">
+        <i class="fa-solid fa-truck-fast text-blue-400 text-3xl"></i>
+        <div class="font-bold">Rastreo en tiempo real</div>
+        <p class="text-gray-500 text-xs">Número de guía enviado por WhatsApp en cuanto sale tu pedido.</p>
+      </div>
+      <div class="flex flex-col items-center gap-3 sm:border-x sm:border-white/8">
+        <i class="fa-solid fa-rotate-left text-purple-400 text-3xl"></i>
+        <div class="font-bold">Respaldo postventa</div>
+        <p class="text-gray-500 text-xs">No desaparecemos después de la venta. Estamos disponibles cuando nos necesites.</p>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <i class="fa-solid fa-circle-check text-green-400 text-3xl"></i>
+        <div class="font-bold">Fotos reales antes del envío</div>
+        <p class="text-gray-500 text-xs">Te mostramos el equipo exacto que recibirás para que lo verifiques antes de pagar.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -894,21 +1131,31 @@
 
       <div class="glass rounded-2xl overflow-hidden">
         <button class="faq-btn w-full flex items-center justify-between p-5 text-left font-semibold hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
-          <span>¿Qué significa "reacondicionado premium importado"?</span>
+          <span>¿Son iPhones originales de Apple?</span>
           <i class="fa-solid fa-plus faq-icon text-gray-400 flex-shrink-0 ml-4"></i>
         </button>
         <div class="faq-answer px-5 text-gray-400 text-sm leading-relaxed">
-          <div class="pb-5">Son equipos originales que fueron revisados, probados y restaurados a su máximo rendimiento antes de la venta. Cada pieza pasa por un proceso de certificación que incluye revisión de pantalla, batería, cámara, altavoces y conectividad. Son 100% funcionales y a un precio mucho menor que uno nuevo.</div>
+          <div class="pb-5">Sí, 100% originales. Son iPhones fabricados por Apple que fueron usados y luego restaurados profesionalmente. No son copias ni réplicas. Todos tienen IMEI verificable y funcionan con el ecosistema Apple completo: App Store, iCloud, FaceTime, etc.</div>
         </div>
       </div>
 
       <div class="glass rounded-2xl overflow-hidden">
         <button class="faq-btn w-full flex items-center justify-between p-5 text-left font-semibold hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
-          <span>¿Cómo sé que la batería realmente está al 90-100%?</span>
+          <span>¿Face ID y Touch ID funcionan perfectamente?</span>
           <i class="fa-solid fa-plus faq-icon text-gray-400 flex-shrink-0 ml-4"></i>
         </button>
         <div class="faq-answer px-5 text-gray-400 text-sm leading-relaxed">
-          <div class="pb-5">Antes de enviar, te mandamos una captura de pantalla de la sección "Salud de la batería" en los ajustes del iPhone. Es un porcentaje verificable directamente en el equipo. Si no cumple con lo prometido, no lo enviamos.</div>
+          <div class="pb-5">Sí. Face ID y Touch ID son funcionalidades vinculadas al chip de seguridad del iPhone y funcionan al 100% en todos nuestros equipos. Los probamos específicamente antes de enviar. Si algún equipo tuviera limitación, te lo informamos antes de que pagues.</div>
+        </div>
+      </div>
+
+      <div class="glass rounded-2xl overflow-hidden">
+        <button class="faq-btn w-full flex items-center justify-between p-5 text-left font-semibold hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+          <span>¿Están liberados para cualquier operadora?</span>
+          <i class="fa-solid fa-plus faq-icon text-gray-400 flex-shrink-0 ml-4"></i>
+        </button>
+        <div class="faq-answer px-5 text-gray-400 text-sm leading-relaxed">
+          <div class="pb-5">Sí, todos nuestros equipos son desbloqueados (factory unlocked). Funcionan con cualquier operadora del mundo: Telcel, AT&amp;T, Movistar, Claro, y cualquier SIM de cualquier país. No necesitas hacer ningún trámite adicional.</div>
         </div>
       </div>
 
@@ -918,7 +1165,47 @@
           <i class="fa-solid fa-plus faq-icon text-gray-400 flex-shrink-0 ml-4"></i>
         </button>
         <div class="faq-answer px-5 text-gray-400 text-sm leading-relaxed">
-          <div class="pb-5">Normalmente 1 a 2 días hábiles a toda la República Mexicana. Una vez que realizas tu pago, te enviamos el número de rastreo para que puedas monitorear tu pedido en tiempo real por WhatsApp.</div>
+          <div class="pb-5">En México: 1 a 2 días hábiles. Para envíos internacionales: entre 5 y 10 días hábiles según el país. Una vez que confirmas tu pago, te enviamos el número de guía por WhatsApp para que puedas rastrear tu pedido en tiempo real.</div>
+        </div>
+      </div>
+
+      <div class="glass rounded-2xl overflow-hidden">
+        <button class="faq-btn w-full flex items-center justify-between p-5 text-left font-semibold hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+          <span>¿Aceptan Mercado Pago?</span>
+          <i class="fa-solid fa-plus faq-icon text-gray-400 flex-shrink-0 ml-4"></i>
+        </button>
+        <div class="faq-answer px-5 text-gray-400 text-sm leading-relaxed">
+          <div class="pb-5">Sí, procesamos todos los pagos a través de Mercado Pago, la plataforma líder en Latinoamérica. Aceptamos tarjeta de crédito/débito (Visa y Mastercard), OXXO Pay, SPEI y transferencia bancaria. Tu dinero está protegido por las políticas de Mercado Pago.</div>
+        </div>
+      </div>
+
+      <div class="glass rounded-2xl overflow-hidden">
+        <button class="faq-btn w-full flex items-center justify-between p-5 text-left font-semibold hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+          <span>¿El equipo incluye garantía?</span>
+          <i class="fa-solid fa-plus faq-icon text-gray-400 flex-shrink-0 ml-4"></i>
+        </button>
+        <div class="faq-answer px-5 text-gray-400 text-sm leading-relaxed">
+          <div class="pb-5">Sí, todos los equipos incluyen garantía de funcionamiento. Si el equipo presenta una falla de fábrica o no funciona como prometido, nos contactas por WhatsApp y lo resolvemos. Tu satisfacción es nuestra prioridad y no desaparecemos después de la venta.</div>
+        </div>
+      </div>
+
+      <div class="glass rounded-2xl overflow-hidden">
+        <button class="faq-btn w-full flex items-center justify-between p-5 text-left font-semibold hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+          <span>¿Cuál es la batería mínima garantizada?</span>
+          <i class="fa-solid fa-plus faq-icon text-gray-400 flex-shrink-0 ml-4"></i>
+        </button>
+        <div class="faq-answer px-5 text-gray-400 text-sm leading-relaxed">
+          <div class="pb-5">Garantizamos un mínimo de 90% de salud de batería en todos los equipos. La mayoría llegan al 94-100%. Antes del envío te mostramos la captura real de la "Salud de la batería" desde los ajustes del iPhone para que lo verifiques tú mismo.</div>
+        </div>
+      </div>
+
+      <div class="glass rounded-2xl overflow-hidden">
+        <button class="faq-btn w-full flex items-center justify-between p-5 text-left font-semibold hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+          <span>¿Qué significa "reacondicionado premium importado"?</span>
+          <i class="fa-solid fa-plus faq-icon text-gray-400 flex-shrink-0 ml-4"></i>
+        </button>
+        <div class="faq-answer px-5 text-gray-400 text-sm leading-relaxed">
+          <div class="pb-5">Son iPhones originales que fueron revisados, probados y restaurados a su máximo rendimiento. Importamos directamente en mayoreo para conseguir los mejores precios. Cada pieza pasa por más de 20 puntos de revisión: pantalla, batería, cámara, altavoces y conectividad.</div>
         </div>
       </div>
 
@@ -928,7 +1215,7 @@
           <i class="fa-solid fa-plus faq-icon text-gray-400 flex-shrink-0 ml-4"></i>
         </button>
         <div class="faq-answer px-5 text-gray-400 text-sm leading-relaxed">
-          <div class="pb-5">Sí. Aceptamos pagos en efectivo por OXXO Pay. Te generamos una referencia de pago que puedes pagar en cualquier tienda OXXO del país. El pedido se procesa en cuanto confirmamos el pago.</div>
+          <div class="pb-5">Sí. A través de Mercado Pago puedes pagar en efectivo en cualquier tienda OXXO del país. Te generamos una referencia de pago y el pedido se procesa en cuanto confirmamos el depósito.</div>
         </div>
       </div>
 
@@ -938,17 +1225,7 @@
           <i class="fa-solid fa-plus faq-icon text-gray-400 flex-shrink-0 ml-4"></i>
         </button>
         <div class="faq-answer px-5 text-gray-400 text-sm leading-relaxed">
-          <div class="pb-5">Contamos con garantía de funcionamiento. Si el equipo llega con algún defecto que no fue mencionado, nos comunicamos por WhatsApp para resolver la situación. Tu satisfacción es nuestra prioridad.</div>
-        </div>
-      </div>
-
-      <div class="glass rounded-2xl overflow-hidden">
-        <button class="faq-btn w-full flex items-center justify-between p-5 text-left font-semibold hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
-          <span>¿Los equipos vienen con accesorios?</span>
-          <i class="fa-solid fa-plus faq-icon text-gray-400 flex-shrink-0 ml-4"></i>
-        </button>
-        <div class="faq-answer px-5 text-gray-400 text-sm leading-relaxed">
-          <div class="pb-5">Generalmente incluyen cable USB-C o Lightning según el modelo. Te informamos exactamente qué incluye cada equipo antes de que confirmes tu compra por WhatsApp, para que no haya sorpresas.</div>
+          <div class="pb-5">Contamos con garantía de funcionamiento. Si el equipo llega con algún defecto que no fue mencionado, nos comunicas por WhatsApp con evidencia en fotos/video y resolvemos la situación. Tu satisfacción es nuestra prioridad.</div>
         </div>
       </div>
 
@@ -1207,9 +1484,10 @@
 <!-- FLOATING WHATSAPP -->
 <a href="https://wa.me/521XXXXXXXXXX?text=Hola%2C%20me%20interesa%20un%20iPhone%20premium%20reacondicionado.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20info%3F"
    target="_blank"
-   class="fixed bottom-6 right-6 z-50 btn-whatsapp wa-float w-14 h-14 rounded-full flex items-center justify-center"
+   class="wa-float-btn fixed bottom-6 right-5 z-50 flex items-center gap-3 btn-whatsapp rounded-full px-4 py-3 shadow-2xl"
    aria-label="Contactar por WhatsApp">
-  <i class="fa-brands fa-whatsapp text-2xl text-white"></i>
+  <i class="fa-brands fa-whatsapp text-2xl text-white flex-shrink-0"></i>
+  <span class="wa-float-label text-sm font-bold text-white whitespace-nowrap">¿Tienes dudas?</span>
 </a>
 
 <!-- Site JavaScript — NO defer: script is at end of body so DOM is already parsed.
