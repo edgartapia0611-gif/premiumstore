@@ -287,9 +287,10 @@ function abrirModal(producto, precio) {
   var mpBtn = document.getElementById('mpPayBtn');
   if (mpBtn) mpBtn.href = MP_LINKS[producto] || MP_LINK_DEFAULT;
 
-  // Mostrar paso 1, ocultar paso 2
+  // Mostrar paso 1, ocultar paso 2, reset upload
   document.getElementById('modalStep1').style.display = '';
   document.getElementById('modalStep2').style.display = 'none';
+  resetUpload();
 
   // Limpiar errores y marcas
   var errEl = document.getElementById('shpError');
@@ -370,6 +371,22 @@ function volverPaso1() {
   if (box) box.scrollTop = 0;
 }
 
+// ── Reset upload area ─────────────────────────────────
+function resetUpload() {
+  var fi   = document.getElementById('comprobanteFile');
+  var area = document.getElementById('uploadArea');
+  var icon = document.getElementById('uploadIcon');
+  var prev = document.getElementById('uploadPreview');
+  var err  = document.getElementById('transferError');
+  if (fi)   fi.value = '';
+  if (area) area.classList.remove('has-file');
+  if (icon) icon.style.display = '';
+  if (prev) { prev.style.display = 'none'; prev.innerHTML = ''; }
+  if (err)  err.style.display = 'none';
+  // Reset tabs to MP
+  selectPayMethod('mp');
+}
+
 // ── Helper: texto de envío para WhatsApp ──────────────
 function _getShippingText() {
   var n  = (document.getElementById('shpNombre')?.value    || '').trim();
@@ -381,6 +398,115 @@ function _getShippingText() {
   var p  = (document.getElementById('shpCP')?.value        || '').trim();
   if (!n && !d) return '';
   return n + ' (' + t + '), ' + d + ', ' + c + ', ' + e + ' CP ' + p + ', ' + pa;
+}
+
+// ── Selector de método de pago ────────────────────────
+function selectPayMethod(method) {
+  var isMP = method === 'mp';
+  document.getElementById('tabMP').classList.toggle('active', isMP);
+  document.getElementById('tabTransfer').classList.toggle('active', !isMP);
+  document.getElementById('panelMP').style.display       = isMP ? '' : 'none';
+  document.getElementById('panelTransfer').style.display = isMP ? 'none' : '';
+}
+
+// ── Copiar dato bancario ──────────────────────────────
+function copiarDato(elId, btnId) {
+  var el  = document.getElementById(elId);
+  var btn = document.getElementById(btnId);
+  if (!el || !btn) return;
+  var txt = el.textContent.replace(/\s/g, '');
+  navigator.clipboard.writeText(txt).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<i class="fa-solid fa-check mr-1" style="pointer-events:none;"></i> ¡Copiado!';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<i class="fa-regular fa-copy mr-1" style="pointer-events:none;"></i> Copiar ' + (elId === 'oxxoNum' ? 'número' : 'cuenta');
+    }, 2200);
+  }).catch(function() {
+    // Fallback para navegadores que bloquean clipboard
+    var range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    try { document.execCommand('copy'); } catch(e) {}
+    window.getSelection().removeAllRanges();
+    btn.textContent = '¡Copiado!';
+    setTimeout(function() {
+      btn.innerHTML = '<i class="fa-regular fa-copy mr-1" style="pointer-events:none;"></i> Copiar ' + (elId === 'oxxoNum' ? 'número' : 'cuenta');
+    }, 2200);
+  });
+}
+
+// ── Preview del comprobante ───────────────────────────
+function onFileSelected(input) {
+  var file = input.files[0];
+  var area = document.getElementById('uploadArea');
+  var icon = document.getElementById('uploadIcon');
+  var prev = document.getElementById('uploadPreview');
+  var err  = document.getElementById('transferError');
+  if (!file) return;
+  err.style.display = 'none';
+  area.classList.add('has-file');
+  if (file.type.startsWith('image/')) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      prev.innerHTML = '<img src="' + e.target.result + '" class="upload-preview-img" alt="Comprobante">'
+        + '<p class="text-xs text-green-400 font-semibold mt-2">'
+        + '<i class="fa-solid fa-circle-check mr-1"></i>' + file.name + '</p>';
+      icon.style.display = 'none';
+      prev.style.display = '';
+    };
+    reader.readAsDataURL(file);
+  } else {
+    prev.innerHTML = '<i class="fa-solid fa-file-pdf text-4xl text-red-400 mb-2"></i>'
+      + '<p class="text-xs text-green-400 font-semibold">'
+      + '<i class="fa-solid fa-circle-check mr-1"></i>' + file.name + '</p>';
+    icon.style.display = 'none';
+    prev.style.display = '';
+  }
+}
+
+// ── Enviar comprobante por WhatsApp ───────────────────
+function enviarComprobante() {
+  var file  = document.getElementById('comprobanteFile').files[0];
+  var err   = document.getElementById('transferError');
+  if (!file) {
+    err.style.display = '';
+    return;
+  }
+  err.style.display = 'none';
+
+  var producto = document.getElementById('modalProduct').textContent || '';
+  var precio   = document.getElementById('modalPrice').textContent   || '';
+  var envio    = _getShippingText();
+  var nombre   = (document.getElementById('shpNombre')?.value || '').trim();
+
+  var msg = '¡Hola! Acabo de realizar un pago por *' + producto + '* — ' + precio
+    + '\n\n📦 *Datos de envío:*\n' + envio
+    + '\n\n📎 *Adjunto mi comprobante de pago* (OXXO/Transferencia).'
+    + '\n\nPor favor confirmar mi pedido. ¡Gracias!';
+
+  // Mostrar overlay de éxito
+  var overlay = document.getElementById('successOverlay');
+  var title   = document.getElementById('successTitle');
+  var subMsg  = document.getElementById('successMsg');
+  if (title)  title.textContent  = '¡Comprobante listo!';
+  if (subMsg) subMsg.textContent = 'Abriendo WhatsApp para enviar tu comprobante...';
+  if (overlay) overlay.classList.add('active');
+
+  // Intentar Web Share API (móvil) — permite adjuntar archivo directamente a WhatsApp
+  if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+    navigator.share({ title: 'Comprobante PremiumStore', text: msg, files: [file] })
+      .catch(function() {
+        // Si cancela o falla, abrir WhatsApp normal
+        window.open('https://wa.me/521XXXXXXXXXX?text=' + encodeURIComponent(msg), '_blank');
+      });
+  } else {
+    // Desktop / navegadores sin Web Share: abrir WhatsApp con el mensaje
+    window.open('https://wa.me/521XXXXXXXXXX?text=' + encodeURIComponent(msg), '_blank');
+  }
+
+  setTimeout(cerrarModal, 3000);
 }
 
 // ── Cerrar modal ──────────────────────────────────────

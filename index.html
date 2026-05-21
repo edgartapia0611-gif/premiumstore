@@ -1353,9 +1353,9 @@
 
     <!-- Success overlay -->
     <div class="success-overlay" id="successOverlay">
-      <div style="font-size:64px; color:#22c55e;"><i class="fa-solid fa-circle-check"></i></div>
-      <div class="text-2xl font-black">¡Redirigiendo a Mercado Pago!</div>
-      <p class="text-gray-400 text-center text-sm px-6">Completa tu pago de forma segura en Mercado Pago.</p>
+      <div style="font-size:64px; color:#22c55e;"><i class="fa-solid fa-circle-check" id="successIcon"></i></div>
+      <div class="text-2xl font-black" id="successTitle">¡Redirigiendo a Mercado Pago!</div>
+      <p class="text-gray-400 text-center text-sm px-6" id="successMsg">Completa tu pago de forma segura en Mercado Pago.</p>
       <button onclick="cerrarModal()" class="text-gray-500 text-sm hover:text-white transition-colors mt-2">Cerrar</button>
     </div>
 
@@ -1440,7 +1440,7 @@
     <div id="modalStep2" style="display:none;">
 
       <!-- Resumen de envío -->
-      <div class="glass rounded-xl p-3 mb-5" style="font-size:13px;">
+      <div class="glass rounded-xl p-3 mb-4" style="font-size:13px;">
         <div class="flex items-center justify-between gap-2">
           <div class="flex items-center gap-2">
             <i class="fa-solid fa-truck text-green-400"></i>
@@ -1455,33 +1455,103 @@
         <div id="shpSummary" class="text-gray-400 mt-1.5 leading-snug" style="white-space:pre-line;"></div>
       </div>
 
-      <!-- Mercado Pago Button -->
-      <a id="mpPayBtn"
-         href="https://mpago.la/21pCVWY"
-         target="_blank" rel="noopener noreferrer"
-         class="mp-btn mb-4">
-        <i class="fa-solid fa-shield-halved text-lg" style="pointer-events:none;"></i>
-        &nbsp; Pagar con Mercado Pago
-      </a>
-
-      <!-- Security note -->
-      <p class="text-center text-xs text-gray-500 mb-5 flex items-center justify-center gap-1.5">
-        <i class="fa-solid fa-lock text-green-500"></i>
-        Pagos 100% seguros mediante Mercado Pago
-      </p>
-
-      <!-- Payment method icons -->
-      <div class="flex flex-wrap items-center justify-center gap-3 mb-6 p-3 rounded-xl" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);">
-        <i class="fa-brands fa-cc-visa text-2xl text-blue-400"></i>
-        <i class="fa-brands fa-cc-mastercard text-2xl text-red-400"></i>
-        <span class="text-xs font-black text-red-600 bg-red-600/10 px-2 py-0.5 rounded">OXXO</span>
-        <span class="text-xs font-bold text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded">SPEI</span>
-        <span class="text-xs font-bold text-sky-400 bg-sky-400/10 px-2 py-0.5 rounded">Mercado Pago</span>
+      <!-- ── Tabs de método de pago ── -->
+      <div class="pay-tabs mb-4">
+        <button class="pay-tab active" id="tabMP" onclick="selectPayMethod('mp')" style="cursor:pointer;">
+          <i class="fa-solid fa-shield-halved mr-1.5" style="pointer-events:none;"></i> Mercado Pago
+        </button>
+        <button class="pay-tab" id="tabTransfer" onclick="selectPayMethod('transfer')" style="cursor:pointer;">
+          <i class="fa-solid fa-building-columns mr-1.5" style="pointer-events:none;"></i> OXXO / Transferencia
+        </button>
       </div>
 
+      <!-- ── Panel: Mercado Pago ── -->
+      <div id="panelMP">
+        <a id="mpPayBtn"
+           href="https://mpago.la/21pCVWY"
+           target="_blank" rel="noopener noreferrer"
+           class="mp-btn mb-3">
+          <i class="fa-solid fa-shield-halved text-lg" style="pointer-events:none;"></i>
+          &nbsp; Pagar con Mercado Pago
+        </a>
+        <p class="text-center text-xs text-gray-500 mb-4 flex items-center justify-center gap-1.5">
+          <i class="fa-solid fa-lock text-green-500"></i>
+          Visa · Mastercard · OXXO Pay · SPEI — 100% seguro
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3 p-3 rounded-xl mb-4" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);">
+          <i class="fa-brands fa-cc-visa text-2xl text-blue-400"></i>
+          <i class="fa-brands fa-cc-mastercard text-2xl text-red-400"></i>
+          <span class="text-xs font-black text-red-600 bg-red-600/10 px-2 py-0.5 rounded">OXXO</span>
+          <span class="text-xs font-bold text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded">SPEI</span>
+        </div>
+      </div>
+
+      <!-- ── Panel: OXXO / Transferencia ── -->
+      <div id="panelTransfer" style="display:none;">
+
+        <!-- OXXO card -->
+        <div class="bank-card mb-3" style="background:linear-gradient(135deg,rgba(220,38,38,0.15),rgba(220,38,38,0.05));border:1px solid rgba(220,38,38,0.3);">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-store text-white text-sm" style="pointer-events:none;"></i>
+            </div>
+            <div>
+              <div class="text-xs font-black text-white uppercase tracking-widest">Depósito OXXO</div>
+              <div class="text-xs text-gray-400">Banco: BANREGIO</div>
+            </div>
+          </div>
+          <div class="bank-number" id="oxxoNum">4741 7429 2857 7009</div>
+          <button class="copy-btn" onclick="copiarDato('oxxoNum','oxxoCopy')" id="oxxoCopy" style="cursor:pointer;">
+            <i class="fa-regular fa-copy mr-1" style="pointer-events:none;"></i> Copiar número
+          </button>
+        </div>
+
+        <!-- Transferencia card -->
+        <div class="bank-card mb-4" style="background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(59,130,246,0.05));border:1px solid rgba(59,130,246,0.3);">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-building-columns text-white text-sm" style="pointer-events:none;"></i>
+            </div>
+            <div>
+              <div class="text-xs font-black text-white uppercase tracking-widest">Transferencia Bancaria</div>
+              <div class="text-xs text-gray-400">BANREGIO · A nombre de: <strong class="text-white">Jessica Cruz</strong></div>
+            </div>
+          </div>
+          <div class="bank-number" id="cuentaNum">058597000082125743</div>
+          <button class="copy-btn" onclick="copiarDato('cuentaNum','cuentaCopy')" id="cuentaCopy" style="cursor:pointer;">
+            <i class="fa-regular fa-copy mr-1" style="pointer-events:none;"></i> Copiar cuenta
+          </button>
+        </div>
+
+        <!-- Upload comprobante -->
+        <div class="upload-area" id="uploadArea" onclick="document.getElementById('comprobanteFile').click()" style="cursor:pointer;">
+          <input type="file" id="comprobanteFile" accept="image/*,application/pdf" style="display:none;" onchange="onFileSelected(this)">
+          <div id="uploadIcon">
+            <i class="fa-solid fa-cloud-arrow-up text-3xl text-gray-400 mb-2" style="pointer-events:none;"></i>
+            <p class="text-sm font-semibold text-white" style="pointer-events:none;">Sube tu comprobante de pago</p>
+            <p class="text-xs text-gray-500 mt-1" style="pointer-events:none;">JPG, PNG o PDF · Toca para seleccionar</p>
+          </div>
+          <div id="uploadPreview" style="display:none;"></div>
+        </div>
+
+        <div id="transferError" class="text-red-400 text-xs mt-2 mb-2" style="display:none;">
+          <i class="fa-solid fa-circle-exclamation mr-1"></i> Por favor sube tu comprobante antes de continuar.
+        </div>
+
+        <!-- Enviar botón -->
+        <button onclick="enviarComprobante()"
+          class="w-full py-3.5 rounded-xl text-sm font-bold text-white mt-3 flex items-center justify-center gap-2"
+          style="background:linear-gradient(135deg,#25D366,#128C7E); border:none; cursor:pointer; position:relative; z-index:2; touch-action:manipulation;">
+          <i class="fa-brands fa-whatsapp text-lg" style="pointer-events:none;"></i>
+          Enviar comprobante por WhatsApp
+        </button>
+        <p class="text-center text-xs text-gray-600 mt-2">Tu pedido se confirma en cuanto verificamos el pago</p>
+
+      </div><!-- /panelTransfer -->
+
       <!-- WhatsApp alternative -->
-      <div class="text-center border-t border-white/8 pt-5">
-        <p class="text-xs text-gray-600 mb-3">¿Prefieres asesoría personalizada?</p>
+      <div class="text-center border-t border-white/8 pt-4 mt-2">
+        <p class="text-xs text-gray-600 mb-2">¿Tienes dudas?</p>
         <button id="modalWABtn" class="btn-whatsapp w-full py-3 rounded-xl text-sm font-bold text-white">
           <i class="fa-brands fa-whatsapp mr-2"></i> Consultar por WhatsApp
         </button>
