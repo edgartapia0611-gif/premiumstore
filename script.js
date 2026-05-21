@@ -132,22 +132,22 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 //  CURRENCY CONVERTER
 // ============================================================
 const RATES = {
-  MXN: { rate:1,        sym:'$',   code:'MXN', name:'Peso Mexicano',       flag:'🇲🇽', dec:0 },
-  USD: { rate:0.0571,   sym:'$',   code:'USD', name:'Dólar EE.UU.',        flag:'🇺🇸', dec:2 },
-  ARS: { rate:62.86,    sym:'$',   code:'ARS', name:'Peso Argentino',      flag:'🇦🇷', dec:0 },
-  COP: { rate:240.0,    sym:'$',   code:'COP', name:'Peso Colombiano',     flag:'🇨🇴', dec:0 },
-  CLP: { rate:55.4,     sym:'$',   code:'CLP', name:'Peso Chileno',        flag:'🇨🇱', dec:0 },
-  PEN: { rate:0.2143,   sym:'S/',  code:'PEN', name:'Sol Peruano',         flag:'🇵🇪', dec:2 },
-  BRL: { rate:0.3343,   sym:'R$',  code:'BRL', name:'Real Brasileño',      flag:'🇧🇷', dec:2 },
-  BOB: { rate:0.3943,   sym:'Bs.', code:'BOB', name:'Boliviano',           flag:'🇧🇴', dec:2 },
-  PYG: { rate:445.7,    sym:'₲',   code:'PYG', name:'Guaraní',             flag:'🇵🇾', dec:0 },
-  UYU: { rate:2.543,    sym:'$',   code:'UYU', name:'Peso Uruguayo',       flag:'🇺🇾', dec:0 },
-  DOP: { rate:2.086,    sym:'RD$', code:'DOP', name:'Peso Dominicano',     flag:'🇩🇴', dec:0 },
-  GTQ: { rate:0.4429,   sym:'Q',   code:'GTQ', name:'Quetzal',             flag:'🇬🇹', dec:2 },
-  HNL: { rate:1.4229,   sym:'L',   code:'HNL', name:'Lempira',             flag:'🇭🇳', dec:2 },
-  NIO: { rate:2.1,      sym:'C$',  code:'NIO', name:'Córdoba',             flag:'🇳🇮', dec:2 },
-  CRC: { rate:30.86,    sym:'₡',   code:'CRC', name:'Colón Costarricense', flag:'🇨🇷', dec:0 },
-  EUR: { rate:0.0531,   sym:'€',   code:'EUR', name:'Euro',                flag:'🇪🇺', dec:2 },
+  MXN: { rate:1,        sym:'$',   code:'MXN', name:'Peso Mexicano',       dec:0 },
+  USD: { rate:0.0571,   sym:'$',   code:'USD', name:'Dólar EE.UU.',        dec:2 },
+  ARS: { rate:62.86,    sym:'$',   code:'ARS', name:'Peso Argentino',      dec:0 },
+  COP: { rate:240.0,    sym:'$',   code:'COP', name:'Peso Colombiano',     dec:0 },
+  CLP: { rate:55.4,     sym:'$',   code:'CLP', name:'Peso Chileno',        dec:0 },
+  PEN: { rate:0.2143,   sym:'S/',  code:'PEN', name:'Sol Peruano',         dec:2 },
+  BRL: { rate:0.3343,   sym:'R$',  code:'BRL', name:'Real Brasileño',      dec:2 },
+  BOB: { rate:0.3943,   sym:'Bs.', code:'BOB', name:'Boliviano',           dec:2 },
+  PYG: { rate:445.7,    sym:'₲',   code:'PYG', name:'Guaraní',             dec:0 },
+  UYU: { rate:2.543,    sym:'$',   code:'UYU', name:'Peso Uruguayo',       dec:0 },
+  DOP: { rate:2.086,    sym:'RD$', code:'DOP', name:'Peso Dominicano',     dec:0 },
+  GTQ: { rate:0.4429,   sym:'Q',   code:'GTQ', name:'Quetzal',             dec:2 },
+  HNL: { rate:1.4229,   sym:'L',   code:'HNL', name:'Lempira',             dec:2 },
+  NIO: { rate:2.1,      sym:'C$',  code:'NIO', name:'Córdoba',             dec:2 },
+  CRC: { rate:30.86,    sym:'₡',   code:'CRC', name:'Colón Costarricense', dec:0 },
+  EUR: { rate:0.0531,   sym:'€',   code:'EUR', name:'Euro',                dec:2 },
 };
 
 let activeCurr = localStorage.getItem('psCurr') || 'MXN';
@@ -185,9 +185,7 @@ function applyRates(code) {
     prEl.classList.add('price-flash');
   });
 
-  const fc = document.getElementById('navCurrFlag');
   const cc = document.getElementById('navCurrCode');
-  if (fc) fc.textContent = r.flag;
   if (cc) cc.textContent = code;
 
   document.querySelectorAll('.chip-btn').forEach(b => {
@@ -213,7 +211,7 @@ function buildCurrencyUI() {
       btn.className    = 'chip-btn flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border';
       btn.dataset.code = code;
       btn.style.cssText = 'border-color:rgba(255,255,255,0.12); background:rgba(255,255,255,0.04); color:#aaa;';
-      btn.innerHTML = r.flag + ' ' + code;
+      btn.innerHTML = code;
       btn.onclick   = () => applyRates(code);
       chipsWrap.appendChild(btn);
     });
@@ -225,8 +223,7 @@ function buildCurrencyUI() {
       const opt = document.createElement('div');
       opt.className    = 'curr-opt';
       opt.dataset.code = r.code;
-      opt.innerHTML    = '<span style="font-size:18px">' + r.flag + '</span>'
-        + '<span class="cc">' + r.code + '</span>'
+      opt.innerHTML    = '<span class="cc">' + r.code + '</span>'
         + '<span class="cn">' + r.name + '</span>';
       opt.onclick = e => { e.stopPropagation(); applyRates(r.code); closeDropdown(); };
       dd.appendChild(opt);
